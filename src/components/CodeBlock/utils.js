@@ -62,7 +62,7 @@ const formatCodes = (codes, options) => {
         options.hideFragment && removeFragment,
         options.hideCodeBlockBtn && removeCodeBlockButton,
         decreaseIndent(options.indent),
-        //removeMountToggle,
+        removeMountToggle,
         removePrettierAndEslintIgnoreComments,
         removeEmptyDivs,
         removeDoubleNewlines,
