@@ -1,0 +1,9 @@
+.stringify {
+    display: inline-block;
+    font-size: 2rem;
+    color: $color-white;
+
+    &.small {
+        font-size: 1.5rem;
+    }
+}
