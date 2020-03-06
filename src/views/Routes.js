@@ -16,7 +16,7 @@ export default [
     {
         navigationName: 'Race conditions',
         path: '/race-conditions',
-        component: () => 'RaceConditions',
+        component: lazy(() => import('./RaceConditions')),
     },
     {
         navigationName: 'Implementation details',

@@ -3,6 +3,7 @@ import { delay } from 'utils';
 class Api {
     baseUrl = 'https://jsonplaceholder.typicode.com';
     subscribers = [];
+    requests = [];
 
     constructor() {
         this._startPollingComments();
@@ -16,8 +17,14 @@ class Api {
         return this._fetch(`${this.baseUrl}/users`);
     }
 
-    getUser(id) {
-        return this._fetch(`${this.baseUrl}/users/${id}`);
+    async getUser(id, optionalDelay) {
+        const user = this._fetch(`${this.baseUrl}/users/${id}`);
+
+        if (optionalDelay) {
+            await delay(optionalDelay);
+        }
+
+        return user;
     }
 
     getUsersPosts(id) {
@@ -62,7 +69,7 @@ class Api {
     }
 
     async _fetch(url) {
-        await delay(2000);
+        this.requests.push(`GET ${url.replace(this.baseUrl, '')}`);
 
         return fetch(url)
             .then(response => {
@@ -74,7 +81,11 @@ class Api {
 
                 return response;
             })
-            .then(response => response.json());
+            .then(response => response.json())
+            .then(async json => {
+                await delay(2000);
+                return json;
+            });
     }
 }
 

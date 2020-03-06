@@ -56,6 +56,7 @@ h2 {
     font-size: 2.5rem;
     color: rgba($color-white, 0.8);
     margin-bottom: 0.5rem;
+    margin-top: 1rem;
 }
 
 h3 {
@@ -65,7 +66,8 @@ h3 {
     margin-top: 2rem;
 }
 
-div, li {
+div,
+li {
     color: $color-white;
     font-size: 1.85rem;
 }

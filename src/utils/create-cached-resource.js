@@ -1,15 +1,25 @@
-export const createResource = method => {
+export const createCachedResource = method => {
     const resourceCache = new Map();
 
     return {
-        read: (cacheKey, ...args) => {
+        read: (...args) => {
+            const cacheKey = args.join();
+
             if (!resourceCache.has(cacheKey)) {
-                throw method(...args).then(value =>
-                    resourceCache.set(cacheKey, value)
-                );
+                throw method(...args)
+                    .then(value => resourceCache.set(cacheKey, { value }))
+                    .catch(error => {
+                        resourceCache.set(cacheKey, { error });
+                    });
             }
 
-            return resourceCache.get(cacheKey);
+            const { value, error } = resourceCache.get(cacheKey);
+
+            if (error) {
+                throw error;
+            }
+
+            return value;
         },
     };
 };
