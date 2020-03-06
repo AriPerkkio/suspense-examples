@@ -6,18 +6,19 @@ export const createCachedResource = method => {
             const cacheKey = args.join();
 
             if (!resourceCache.has(cacheKey)) {
-                throw method(...args)
+                const suspender = method(...args)
                     .then(value => resourceCache.set(cacheKey, { value }))
                     .catch(error => {
                         resourceCache.set(cacheKey, { error });
                     });
+
+                resourceCache.set(cacheKey, { suspender });
             }
 
-            const { value, error } = resourceCache.get(cacheKey);
+            const { value, suspender, error } = resourceCache.get(cacheKey);
 
-            if (error) {
-                throw error;
-            }
+            if (suspender) throw suspender;
+            if (error) throw error;
 
             return value;
         },

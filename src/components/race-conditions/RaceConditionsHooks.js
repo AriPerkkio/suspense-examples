@@ -4,16 +4,16 @@ import Api from 'api';
 
 const reducer = (state, partial) => ({ ...state, ...partial });
 const initialState = { user: null, isLoading: false, error: false };
+const addDelayMs = id => 1000 * parseInt(id);
 
 const UserCard = ({ id }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const { user, isLoading, error } = state;
 
     useEffect(() => {
-        const delayMs = 1000 * parseInt(id);
         dispatch({ isLoading: true, error: false });
 
-        Api.getUser(id, delayMs)
+        Api.getUser(id, addDelayMs(id))
             .then(response => dispatch({ user: response, isLoading: false }))
             .catch(() => dispatch({ error: true, isLoading: false }));
     }, [id]);

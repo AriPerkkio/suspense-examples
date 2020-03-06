@@ -4,10 +4,10 @@ import {
     RaceConditionsHooks,
     RaceConditionsSuspense,
 } from 'components/race-conditions';
-import Input from 'components/Input';
-import { CodeBlockButton } from 'components/CodeBlock';
+import Input from 'components/common/Input';
+import MountToggle from 'components/common/MountToggle';
+import { CodeBlockButton } from 'components/common/CodeBlock';
 import { ApiRequests } from 'api';
-import MountToggle from 'components/MountToggle';
 
 const RaceConditions = () => (
     <>

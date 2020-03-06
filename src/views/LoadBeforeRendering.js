@@ -1,9 +1,9 @@
 import React, { Suspense } from 'react';
 
-import UserList from 'components/UserList';
-import ErrorBoundary from 'components/ErrorBoundary';
-import { CodeBlockButton } from 'components/CodeBlock';
-import MountToggle from 'components/MountToggle';
+import UserList from 'components/load-before-rendering/UserList';
+import ErrorBoundary from 'components/common/ErrorBoundary';
+import { CodeBlockButton } from 'components/common/CodeBlock';
+import MountToggle from 'components/common/MountToggle';
 
 const LoadBeforeRendering = () => (
     <>
@@ -25,7 +25,7 @@ const LoadBeforeRendering = () => (
             />
 
             <CodeBlockButton
-                fileName='components/UserList/UserList.js'
+                fileName='components/load-before-rendering/UserList/UserList.js'
                 text='UserList'
             />
 

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import UserCard from 'components/UserCard';
-import MountToggle from 'components/MountToggle';
-import { CodeBlockButton } from 'components/CodeBlock';
+import UserCard from 'components/resource-as-prop/UserCard';
+import MountToggle from 'components/common/MountToggle';
+import { CodeBlockButton } from 'components/common/CodeBlock';
 
 const ResourceAsProp = () => (
     <>
@@ -15,11 +15,11 @@ const ResourceAsProp = () => (
 
         <div>
             <CodeBlockButton
-                fileName='components/UserCard/UserCard.js'
+                fileName='components/resource-as-prop/UserCard/UserCard.js'
                 text='UserCard'
             />
             <CodeBlockButton
-                fileName='components/UserCard/UserDetails.js'
+                fileName='components/resource-as-prop/UserCard/UserDetails.js'
                 text='UserDetails'
             />
         </div>

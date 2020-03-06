@@ -1,7 +1,7 @@
 import React, { useReducer, Suspense } from 'react';
 
 import UserDetails from './UserDetails';
-import ErrorBoundary from 'components/ErrorBoundary';
+import ErrorBoundary from 'components/common/ErrorBoundary';
 import Api from 'api';
 import { createResource } from 'utils';
 

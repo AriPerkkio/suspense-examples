@@ -2,8 +2,8 @@ import React, { Suspense } from 'react';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 
 import Routes from 'views/Routes';
-import Sidebar from 'components/Sidebar';
-import CodeBlock, { CodeBlockProvider } from 'components/CodeBlock';
+import Sidebar from 'components/common/Sidebar';
+import CodeBlock, { CodeBlockProvider } from 'components/common/CodeBlock';
 
 const App = () => (
     <HashRouter>

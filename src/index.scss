@@ -6,8 +6,7 @@
 #app-root {
     @import 'scss/common';
 
-    @import 'components/CodeBlock/code-block';
-    @import 'components/Link/link';
-    @import 'components/Sidebar/sidebar';
-    @import 'components/Stringify/stringify';
+    @import 'components/common/CodeBlock/code-block';
+    @import 'components/common/Link/link';
+    @import 'components/common/Sidebar/sidebar';
 }

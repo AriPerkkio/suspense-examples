@@ -1,10 +1,11 @@
 import React, { Suspense } from 'react';
 
-import ErrorBoundary from 'components/ErrorBoundary';
+import ErrorBoundary from 'components/common/ErrorBoundary';
 import Api from 'api';
 import { createCachedResource } from 'utils';
 
 const cache = createCachedResource(Api.getUser.bind(Api));
+const addDelayMs = id => 1000 * parseInt(id);
 
 const RaceConditionsSuspense = ({ id }) => (
     <Suspense fallback={<div>Loading user {id}...</div>}>
@@ -15,9 +16,9 @@ const RaceConditionsSuspense = ({ id }) => (
         </ErrorBoundary>
     </Suspense>
 );
+
 const UserDetails = ({ id }) => {
-    const delayMs = 1000 * parseInt(id);
-    const user = cache.read(id, delayMs);
+    const user = cache.read(id, addDelayMs(id));
 
     return (
         <section>
