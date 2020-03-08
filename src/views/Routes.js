@@ -21,7 +21,7 @@ export default [
     {
         navigationName: 'Implementation details',
         path: '/implementation-details',
-        component: () => 'ImplementationDetails',
+        component: lazy(() => import('./ImplementationDetails')),
     },
     {
         navigationName: 'With hooks',

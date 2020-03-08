@@ -2,20 +2,18 @@ import React from 'react';
 
 const UserDetails = ({ resource }) => {
     const user = resource.read();
-    const { id, name, username, email } = user;
 
     return (
         <section>
             <h3>
-                {name} ({id})
+                {user.name} ({user.id})
             </h3>
             <ul>
-                <li>Username: {username}</li>
-                <li>Email: {email}</li>
+                <li>Username: {user.username}</li>
+                <li>Email: {user.email}</li>
             </ul>
         </section>
     );
 };
 
-UserDetails.displayName = 'UserDetails';
 export default UserDetails;

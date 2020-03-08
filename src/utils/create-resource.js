@@ -1,9 +1,9 @@
-export const createResource = promise => {
+export const createResource = method => {
     let response;
     let isLoading = true;
     let error;
 
-    let pendingPromise = promise
+    let pendingPromise = method()
         .then(json => {
             response = json;
             isLoading = false;

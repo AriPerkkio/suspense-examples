@@ -44,6 +44,14 @@
             box-shadow: none;
         }
     }
+
+    &-flex-wrapper {
+        display: flex;
+
+        & > * + div {
+            margin-left: 5rem;
+        }
+    }
 }
 
 h1 {

@@ -10,15 +10,15 @@ const App = () => (
         <Sidebar />
         <CodeBlockProvider>
             <main className='content'>
-                <article className='content-main'>
-                    <Suspense fallback='Loading...'>
+                <section className='content-main'>
+                    <Suspense fallback={<div>Loading...</div>}>
                         <Switch>
                             {Routes.map(props => (
                                 <Route key={props.path} {...props} />
                             ))}
                         </Switch>
                     </Suspense>
-                </article>
+                </section>
                 <CodeBlock />
             </main>
         </CodeBlockProvider>

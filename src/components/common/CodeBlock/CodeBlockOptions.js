@@ -13,18 +13,8 @@ const initialOptions = {
 
 const options = [
     {
-        name: 'hideStringify',
-        label: 'Hide Stringify',
-        type: 'checkbox',
-    },
-    {
         name: 'hideFragment',
         label: 'Hide Fragment',
-        type: 'checkbox',
-    },
-    {
-        name: 'hideCodeBlockBtn',
-        label: 'Hide CodeblockButton',
         type: 'checkbox',
     },
     {

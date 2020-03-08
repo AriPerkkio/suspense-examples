@@ -19,8 +19,9 @@ const CodeBlock = () => {
     const [options, setOptions] = useReducer(mergeReducer, initialOptions);
 
     const onReset = () => {
+        const { fontSize, ...keepFontSize } = initialOptions;
         resetCodes();
-        setOptions(initialOptions);
+        setOptions(keepFontSize);
     };
 
     useWindowResize(width => {
@@ -54,7 +55,7 @@ const CodeBlock = () => {
     );
 
     return (
-        <article className={wrapperClassNames}>
+        <section className={wrapperClassNames}>
             <CodeBlockOptions
                 values={options}
                 onChange={setOptions}
@@ -84,7 +85,7 @@ const CodeBlock = () => {
                     </div>
                 ))}
             </div>
-        </article>
+        </section>
     );
 };
 

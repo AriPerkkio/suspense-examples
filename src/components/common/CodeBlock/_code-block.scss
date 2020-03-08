@@ -47,6 +47,14 @@
         &-full-screen {
             flex-direction: row;
         }
+
+        @include screen-large {
+            margin-left: -5rem;
+        }
+
+        @include screen-medium {
+            margin-left: -4rem;
+        }
     }
 
     &-wrapper {
@@ -97,9 +105,15 @@
         display: flex;
         justify-content: flex-end;
         flex-wrap: wrap;
+        margin-bottom: 1rem;
 
         @include screen-large {
             justify-content: flex-start;
+        }
+
+        span {
+            display: flex;
+            align-items: center;
         }
 
         label {
@@ -134,10 +148,6 @@
             &[type='number'] {
                 width: 3rem;
             }
-
-            @include screen-large {
-                margin-bottom: 0.5rem;
-            }
         }
 
         button {
@@ -148,7 +158,6 @@
             background-color: transparent;
             color: $color-white;
             margin-right: 1rem;
-            margin-bottom: 0.5rem;
 
             &:hover {
                 text-decoration: underline;

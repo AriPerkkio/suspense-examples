@@ -5,7 +5,7 @@ import ErrorBoundary from 'components/common/ErrorBoundary';
 import Api from 'api';
 import { createResource } from 'utils';
 
-const fetchUser = id => createResource(Api.getUser(id));
+const fetchUser = id => createResource(() => Api.getUser(id));
 const initializeState = () => ({ id: 1, resource: fetchUser(1) });
 const reducer = (_, id) => ({ id, resource: fetchUser(id) });
 
@@ -37,5 +37,4 @@ const UserCard = () => {
     );
 };
 
-UserCard.displayName = 'UserCard';
 export default UserCard;

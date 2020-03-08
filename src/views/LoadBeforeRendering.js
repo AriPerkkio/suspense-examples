@@ -7,8 +7,7 @@ import MountToggle from 'components/common/MountToggle';
 
 const LoadBeforeRendering = () => (
     <>
-        <h1>Suspense</h1>
-        <h2>Load before rendering</h2>
+        <h1>Load before rendering</h1>
 
         <MountToggle initiallyMounted>
             <Suspense fallback={<div>Loading users...</div>}>

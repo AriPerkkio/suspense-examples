@@ -13,19 +13,14 @@ class Api {
         return this._fetch(`${this.baseUrl}/comments/${index}`);
     }
 
-    getUsers() {
+    getUsers = () => {
         return this._fetch(`${this.baseUrl}/users`);
-    }
+    };
 
-    async getUser(id, optionalDelay) {
-        const user = this._fetch(`${this.baseUrl}/users/${id}`);
-
-        if (optionalDelay) {
-            await delay(optionalDelay);
-        }
-
-        return user;
-    }
+    getUser = id => {
+        const delayMs = 1000 * parseInt(id);
+        return this._fetch(`${this.baseUrl}/users/${id}`, { delayMs });
+    };
 
     getUsersPosts(id) {
         return this._fetch(`${this.baseUrl}/users/${id}/posts`);
@@ -68,8 +63,10 @@ class Api {
         }, 2000);
     }
 
-    async _fetch(url) {
-        this.requests.push(`GET ${url.replace(this.baseUrl, '')}`);
+    async _fetch(url, options = {}) {
+        const { delayMs } = options;
+        const resource = url.replace(this.baseUrl, '');
+        this.requests.push(`GET ${resource}`);
 
         return fetch(url)
             .then(response => {
@@ -83,7 +80,9 @@ class Api {
             })
             .then(response => response.json())
             .then(async json => {
-                await delay(2000);
+                await delay(delayMs || 2000);
+
+                this.requests.push(`OK ${resource}`);
                 return json;
             });
     }

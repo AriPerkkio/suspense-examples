@@ -4,8 +4,7 @@ import ErrorBoundary from 'components/common/ErrorBoundary';
 import Api from 'api';
 import { createCachedResource } from 'utils';
 
-const cache = createCachedResource(Api.getUser.bind(Api));
-const addDelayMs = id => 1000 * parseInt(id);
+const cache = createCachedResource(Api.getUser);
 
 const RaceConditionsSuspense = ({ id }) => (
     <Suspense fallback={<div>Loading user {id}...</div>}>
@@ -18,12 +17,12 @@ const RaceConditionsSuspense = ({ id }) => (
 );
 
 const UserDetails = ({ id }) => {
-    const user = cache.read(id, addDelayMs(id));
+    const user = cache.read(id);
 
     return (
         <section>
             <h3>
-                {user.name} ({user.id})
+                {user.name} ({user.id}) (props.id {id})
             </h3>
             <ul>
                 <li>Username: {user.username}</li>

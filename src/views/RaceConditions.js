@@ -13,17 +13,25 @@ const RaceConditions = () => (
     <>
         <h1>Race conditions</h1>
 
-        <h2>With hooks</h2>
-        <MountToggle>
-            <Input>{({ value }) => <RaceConditionsHooks id={value} />}</Input>
-        </MountToggle>
+        <div className='common-flex-wrapper'>
+            <div>
+                <h2>With hooks</h2>
+                <MountToggle>
+                    <Input>
+                        {({ value }) => <RaceConditionsHooks id={value} />}
+                    </Input>
+                </MountToggle>
+            </div>
 
-        <h2>With suspense</h2>
-        <MountToggle>
-            <Input>
-                {({ value }) => <RaceConditionsSuspense id={value} />}
-            </Input>
-        </MountToggle>
+            <div>
+                <h2>With suspense</h2>
+                <MountToggle>
+                    <Input>
+                        {({ value }) => <RaceConditionsSuspense id={value} />}
+                    </Input>
+                </MountToggle>
+            </div>
+        </div>
 
         <div style={{ marginTop: '2rem' }}>
             <CodeBlockButton
