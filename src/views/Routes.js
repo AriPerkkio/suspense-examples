@@ -24,6 +24,11 @@ export default [
         component: lazy(() => import('./ImplementationDetails')),
     },
     {
+        navigationName: 'Suspense List',
+        path: '/suspense-list',
+        component: () => 'SuspenseList',
+    },
+    {
         navigationName: 'With hooks',
         path: '/with-hooks',
         component: () => 'WithHooks',
