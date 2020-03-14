@@ -1,5 +1,8 @@
+import { addCache } from './cache-store'; // hide-line
+// hide-line
 export const createCachedResource = method => {
     const resourceCache = new Map();
+    addCache(resourceCache); // hide-line
 
     return {
         read: (...args) => {

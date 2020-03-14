@@ -10,7 +10,7 @@ const Input = ({ children }) => {
                 value={value}
                 onChange={e => setValue(e.target.value)}
             />
-            {children({ value })}
+            {children(value)}
         </div>
     );
 };

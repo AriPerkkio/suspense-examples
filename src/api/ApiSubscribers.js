@@ -19,7 +19,9 @@ const ApiRequests = () => {
 
     return (
         <>
-            <h3 onClick={() => (Api.requests = [])}>
+            <h3
+                onClick={() => (Api.requests = [])}
+                style={{ cursor: 'pointer' }}>
                 API requests, click to reset
             </h3>
             <ul>

@@ -26,7 +26,7 @@ export default [
     {
         navigationName: 'Suspense List',
         path: '/suspense-list',
-        component: () => 'SuspenseList',
+        component: lazy(() => import('./SuspenseList')),
     },
     {
         navigationName: 'With hooks',
