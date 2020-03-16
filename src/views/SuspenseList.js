@@ -11,11 +11,17 @@ const SuspenseList = () => (
     <>
         <h1>SuspenseList</h1>
 
-        <Select options={['forwards', 'backwards', 'together']}>
+        <Select
+            label='revealOrder'
+            options={['forwards', 'backwards', 'together']}>
             {revealOrder => (
-                <MountToggle>
-                    <UserList revealOrder={revealOrder} />
-                </MountToggle>
+                <Select label='tail' options={['collapsed', 'hidden']}>
+                    {tail => (
+                        <MountToggle>
+                            <UserList revealOrder={revealOrder} tail={tail} />
+                        </MountToggle>
+                    )}
+                </Select>
             )}
         </Select>
 

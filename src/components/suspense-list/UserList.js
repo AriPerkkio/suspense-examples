@@ -6,22 +6,22 @@ import { createCachedResource } from 'utils';
 
 const cache = createCachedResource(Api.getUser);
 
-const UserList = ({ revealOrder }) => (
-    <SuspenseList revealOrder={revealOrder}>
+const UserList = ({ revealOrder, tail }) => (
+    <SuspenseList revealOrder={revealOrder} tail={tail}>
+        <Suspense fallback={<div>Loading user 2...</div>}>
+            <UserDetails getResource={() => cache.read(2)} />
+        </Suspense>
+
+        <Suspense fallback={<div>Loading user 3...</div>}>
+            <UserDetails getResource={() => cache.read(3)} />
+        </Suspense>
+
         <Suspense fallback={<div>Loading user 4...</div>}>
             <UserDetails getResource={() => cache.read(4)} />
         </Suspense>
 
         <Suspense fallback={<div>Loading user 5...</div>}>
             <UserDetails getResource={() => cache.read(5)} />
-        </Suspense>
-
-        <Suspense fallback={<div>Loading user 6...</div>}>
-            <UserDetails getResource={() => cache.read(6)} />
-        </Suspense>
-
-        <Suspense fallback={<div>Loading user 7...</div>}>
-            <UserDetails getResource={() => cache.read(7)} />
         </Suspense>
     </SuspenseList>
 );
