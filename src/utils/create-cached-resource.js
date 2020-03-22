@@ -1,29 +1,26 @@
-import { addCache } from './cache-store'; // hide-line
-// hide-line
+import CacheStore from './cache-store'; // hide-line
+
 export const createCachedResource = method => {
-    const resourceCache = new Map();
-    addCache(resourceCache); // hide-line
+    const resourceCache = CacheStore.createCache(); // hide-line
+    // const resourceCache = new Map(); uncomment
 
     return {
         read: (...args) => {
             const cacheKey = args.join();
 
             if (!resourceCache.has(cacheKey)) {
-                const suspender = method(...args)
-                    .then(value => resourceCache.set(cacheKey, { value }))
-                    .catch(error => {
-                        resourceCache.set(cacheKey, { error });
-                    });
+                const promise = method(...args)
+                    .then(value => resourceCache.set(cacheKey, value))
+                    .catch(error => resourceCache.set(cacheKey, error));
 
-                resourceCache.set(cacheKey, { suspender });
+                resourceCache.set(cacheKey, promise);
             }
 
-            const { value, suspender, error } = resourceCache.get(cacheKey);
+            const resource = resourceCache.get(cacheKey);
+            if (resource instanceof Promise) throw resource;
+            if (resource instanceof Error) throw resource;
 
-            if (suspender) throw suspender;
-            if (error) throw error;
-
-            return value;
+            return resource;
         },
     };
 };

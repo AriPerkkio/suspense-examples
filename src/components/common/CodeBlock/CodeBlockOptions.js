@@ -4,8 +4,7 @@ const BASE_CLASS = 'code-block-options';
 
 const initialOptions = {
     hideFragment: false,
-    hideStringify: false,
-    hideCodeBlockBtn: true,
+    hideCommonImports: true,
     fullScreen: false,
     indent: 4,
     fontSize: 16,
@@ -15,6 +14,11 @@ const options = [
     {
         name: 'hideFragment',
         label: 'Hide Fragment',
+        type: 'checkbox',
+    },
+    {
+        name: 'hideCommonImports',
+        label: 'Hide Common Imports',
         type: 'checkbox',
     },
     {

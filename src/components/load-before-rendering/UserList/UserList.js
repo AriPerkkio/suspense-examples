@@ -2,6 +2,8 @@ import React from 'react';
 
 import Api from 'api';
 import { createResource } from 'utils';
+import { H2 } from 'components/common/Text';
+import { List, ListItem } from 'components/common/List';
 
 // Start loading users as soon as UserList.js is imported
 const resource = createResource(Api.getUsers);
@@ -11,12 +13,13 @@ const UserList = () => {
 
     return (
         <section>
-            <h3>Users</h3>
-            <ul>
+            <H2>Users</H2>
+
+            <List>
                 {users.map(user => (
-                    <li key={user.id}>{user.name}</li>
+                    <ListItem key={user.id}>{user.name}</ListItem>
                 ))}
-            </ul>
+            </List>
         </section>
     );
 };

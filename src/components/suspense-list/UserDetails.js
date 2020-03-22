@@ -1,17 +1,21 @@
 import React from 'react';
 
+import { H3 } from 'components/common/Text';
+import { List, ListItem } from 'components/common/List';
+
 const UserDetails = ({ getResource }) => {
     const user = getResource();
 
     return (
         <section>
-            <h3>
+            <H3>
                 {user.name} ({user.id})
-            </h3>
-            <ul>
-                <li>Username: {user.username}</li>
-                <li>Email: {user.email}</li>
-            </ul>
+            </H3>
+
+            <List>
+                <ListItem>Username: {user.username}</ListItem>
+                <ListItem>Email: {user.email}</ListItem>
+            </List>
         </section>
     );
 };

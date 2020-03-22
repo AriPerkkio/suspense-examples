@@ -1,5 +1,4 @@
-const REGEX_MOUNT_TOGGLE_IMPORT = /\nimport MountToggle from 'components\/common\/MountToggle';/g;
-const REGEX_CODEBLOCKBUTTON_IMPORT = /\nimport { CodeBlockButton } from 'components\/common\/CodeBlock';/g;
+const REGEX_COMMON_IMPORT = /\nimport ([\S ])* from 'components\/common\/(\S)*';/g;
 const REGEX_CODEBLOCKBUTTON = /\n\s*<CodeBlockButton(\s|\w|[='/.-])*>/g;
 const REGEX_FRAGMENT = /(\s*) <>|<\/>/g;
 const REGEX_MOUNT_TOGGLE = /(\s*) <MountToggle(\s|\w|[='/.])*>|<\/MountToggle>/g;
@@ -29,18 +28,16 @@ const decreaseNewlineIndent = code =>
 const removeMountToggle = code =>
     code
         .replace(REGEX_MOUNT_TOGGLE_CONTENT, decreaseNewlineIndent)
-        .replace(REGEX_MOUNT_TOGGLE, '\n')
-        .replace(REGEX_MOUNT_TOGGLE_IMPORT, '');
+        .replace(REGEX_MOUNT_TOGGLE, '\n');
 
 const removeFragment = code =>
     code
         .replace(REGEX_FRAGMENT_CONTENT, decreaseNewlineIndent)
         .replace(REGEX_FRAGMENT, '');
 
-const removeCodeBlockButton = code =>
-    code
-        .replace(REGEX_CODEBLOCKBUTTON, '')
-        .replace(REGEX_CODEBLOCKBUTTON_IMPORT, '');
+const removeCodeBlockButton = code => code.replace(REGEX_CODEBLOCKBUTTON, '');
+
+const removeCommonImports = code => code.replace(REGEX_COMMON_IMPORT, '');
 
 const removeEmptyDivs = code => code.replace(REGEX_EMPTY_DIV, '');
 
@@ -54,8 +51,9 @@ const removeHiddenLines = code => code.replace(REGEX_HIDE_LINE, '');
 const formatCodes = (codes, options) => {
     const formatters = [
         options.hideFragment && removeFragment,
-        options.hideCodeBlockBtn && removeCodeBlockButton,
+        removeCodeBlockButton,
         decreaseIndent(options.indent),
+        options.hideCommonImports && removeCommonImports,
         removeMountToggle,
         removePrettierAndEslintIgnoreComments,
         removeEmptyDivs,

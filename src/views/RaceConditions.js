@@ -6,31 +6,33 @@ import {
 } from 'components/race-conditions';
 import Input from 'components/common/Input';
 import MountToggle from 'components/common/MountToggle';
+import { H1, H2 } from 'components/common/Text';
+import { FlexContainer } from 'components/common/Containers';
 import { CodeBlockButton } from 'components/common/CodeBlock';
 import CacheReset from 'components/common/CacheReset';
 import { ApiRequests } from 'api';
 
 const RaceConditions = () => (
     <>
-        <h1>Race conditions</h1>
+        <H1>Race conditions</H1>
 
-        <div className='common-flex-wrapper'>
+        <FlexContainer>
             <div>
-                <h2>With hooks</h2>
+                <H2>With hooks</H2>
                 <MountToggle>
                     <Input>{id => <RaceConditionsHooks id={id} />}</Input>
                 </MountToggle>
             </div>
 
             <div>
-                <h2>With suspense</h2>
+                <H2>With suspense</H2>
                 <MountToggle>
                     <Input>{id => <RaceConditionsSuspense id={id} />}</Input>
                 </MountToggle>
-            </div>
-        </div>
 
-        <CacheReset />
+                <CacheReset />
+            </div>
+        </FlexContainer>
 
         <div>
             <CodeBlockButton

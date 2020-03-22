@@ -2,11 +2,14 @@ import React from 'react';
 
 import CustomSuspense from './CustomSuspense';
 import ErrorBoundary from './ErrorBoundary';
+import { Error, Loader } from 'components/common/Indicators';
+import { H3 } from 'components/common/Text';
+import { List, ListItem } from 'components/common/List';
 import Api from 'api';
 
 const UserDetails = () => (
-    <CustomSuspense fallback={<div>Loading user</div>}>
-        <ErrorBoundary fallback={<div>Failed to load user</div>}>
+    <CustomSuspense fallback={<Loader>Loading user</Loader>}>
+        <ErrorBoundary fallback={<Error>Failed to load user</Error>}>
             <UserInfo />
         </ErrorBoundary>
     </CustomSuspense>
@@ -24,13 +27,13 @@ const UserInfo = () => {
 
     return (
         <section>
-            <h3>
+            <H3>
                 {resource.name} ({resource.id})
-            </h3>
-            <ul>
-                <li>Username: {resource.username}</li>
-                <li>Email: {resource.email}</li>
-            </ul>
+            </H3>
+            <List>
+                <ListItem>Username: {resource.username}</ListItem>
+                <ListItem>Email: {resource.email}</ListItem>
+            </List>
         </section>
     );
 };

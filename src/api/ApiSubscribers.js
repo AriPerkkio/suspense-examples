@@ -1,6 +1,8 @@
 import React from 'react';
 
 import Api from './Api';
+import { H3 } from 'components/common/Text';
+import { List, ListItem } from 'components/common/List';
 import { useForceRender } from 'hooks';
 
 const MAX_LIST_COUNT = 10;
@@ -18,19 +20,19 @@ const ApiRequests = () => {
     const displayCount = count > MAX_LIST_COUNT ? count - MAX_LIST_COUNT : 0;
 
     return (
-        <>
-            <h3
+        <section>
+            <H3
                 onClick={() => (Api.requests = [])}
                 style={{ cursor: 'pointer' }}>
                 API requests, click to reset
-            </h3>
-            <ul>
-                {count > MAX_LIST_COUNT && <li>...</li>}
+            </H3>
+            <List>
+                {count > MAX_LIST_COUNT && <ListItem>...</ListItem>}
                 {Api.requests.slice(displayCount).map((url, key) => (
-                    <li key={key}>{url}</li>
+                    <ListItem key={key}>{url}</ListItem>
                 ))}
-            </ul>
-        </>
+            </List>
+        </section>
     );
 };
 

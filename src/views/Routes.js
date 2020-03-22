@@ -9,11 +9,6 @@ export default [
         component: lazy(() => import('./LoadBeforeRendering')),
     },
     {
-        navigationName: 'Resource as prop',
-        path: '/resource-as-prop',
-        component: lazy(() => import('./ResourceAsProp')),
-    },
-    {
         navigationName: 'Race conditions',
         path: '/race-conditions',
         component: lazy(() => import('./RaceConditions')),
@@ -27,6 +22,11 @@ export default [
         navigationName: 'Suspense List',
         path: '/suspense-list',
         component: lazy(() => import('./SuspenseList')),
+    },
+    {
+        navigationName: 'Transition',
+        path: '/transition',
+        component: lazy(() => import('./Transition')),
     },
     {
         navigationName: 'With hooks',

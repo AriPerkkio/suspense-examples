@@ -1,16 +1,17 @@
 import React from 'react';
 
+import { H1, H2 } from 'components/common/Text';
 import Link from 'components/common/Link';
 
 const Main = () => (
     <>
-        <h1>Suspense examples</h1>
+        <H1>Suspense examples</H1>
 
-        <h2>
+        <H2>
             <Link href='https://github.com/AriPerkkio/suspense-examples'>
                 Source codes
             </Link>
-        </h2>
+        </H2>
     </>
 );
 

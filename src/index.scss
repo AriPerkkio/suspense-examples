@@ -4,9 +4,6 @@
 @import 'scss/base';
 
 #app-root {
-    @import 'scss/common';
-
     @import 'components/common/CodeBlock/code-block';
-    @import 'components/common/Link/link';
     @import 'components/common/Sidebar/sidebar';
 }

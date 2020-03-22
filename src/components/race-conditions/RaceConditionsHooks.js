@@ -1,5 +1,8 @@
 import React, { useReducer, useEffect } from 'react';
 
+import { H3 } from 'components/common/Text';
+import { List, ListItem } from 'components/common/List';
+import { Error, Loader } from 'components/common/Indicators';
 import Api from 'api';
 
 const reducer = (state, partial) => ({ ...state, ...partial });
@@ -17,18 +20,19 @@ const UserCard = ({ id }) => {
             .catch(() => dispatch({ error: true, isLoading: false }));
     }, [id]);
 
-    if (isLoading) return <div>Loading user {id}...</div>;
-    if (error || !user) return <div>Error loading user {id}.</div>;
+    if (isLoading) return <Loader>Loading user {id}...</Loader>;
+    if (error || !user) return <Error>Error loading user {id}.</Error>;
 
     return (
         <section>
-            <h3>
+            <H3>
                 {user.name} ({user.id}) (props.id {id})
-            </h3>
-            <ul>
-                <li>Username: {user.username}</li>
-                <li>Email: {user.email}</li>
-            </ul>
+            </H3>
+
+            <List>
+                <ListItem>Username: {user.username}</ListItem>
+                <ListItem>Email: {user.email}</ListItem>
+            </List>
         </section>
     );
 };
