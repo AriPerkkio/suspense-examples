@@ -12,7 +12,7 @@ const REGEX_PRETTIER_IGNORE = /\n\s*\/\/ prettier-ignore/g;
 const REGEX_ESLINT_IGNORE = /\n\s*\/\/ eslint-disable-next-line/g;
 const REGEX_DOUBLE_NEWLINES = /\n\n\n/g;
 const REGEX_POST_NEWLINE = /\n\n\);/g;
-const REGEX_HIDE_LINE = /( |\S)*\/\/ hide-line\n/g;
+const REGEX_HIDE_LINE = /( |\S)*\/\/ hide-line([\S ]*)\n/g;
 
 const removePrettierAndEslintIgnoreComments = code =>
     code.replace(REGEX_PRETTIER_IGNORE, '\n').replace(REGEX_ESLINT_IGNORE, '');

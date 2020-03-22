@@ -1,8 +1,10 @@
 import CacheStore from './cache-store'; // hide-line
-
+// hide-line
 export const createCachedResource = method => {
     const resourceCache = CacheStore.createCache(); // hide-line
-    // const resourceCache = new Map(); uncomment
+    /* // hide-line
+    const resourceCache = new Map();
+   // hide-line */
 
     return {
         read: (...args) => {
